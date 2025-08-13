@@ -7,6 +7,102 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="topdownstyle.css">
 </head>
+
+<script>
+    function getProjectParam() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('project') || 'dialogue-framework'; // default if not specified
+}
+
+async function loadProjectDetails() {
+    const project = getProjectParam();
+    const jsonFile = `project-${project}.json`;
+
+    try {
+        const response = await fetch(jsonFile);
+        const data = await response.json();
+
+        // ...rest of your rendering code...
+        document.querySelector('.project-name').textContent = data.name;
+        document.querySelector('.project-tagline').textContent = data.tagline;
+        document.title = `${data.name} - kevin cabranes`;
+
+        if(document.querySelector('.project-role')) {
+            document.querySelector('.project-role').textContent = data.role;
+        }
+        if(document.querySelector('.project-year')) {
+            document.querySelector('.project-year').textContent = data.year;
+        }
+
+        document.querySelector('.content-grid').innerHTML = `
+            <div class="content-text">
+                ${data.overview.map(p => `<p>${p}</p>`).join('')}
+            </div>
+            <div class="content-info">
+                <div class="info-block">
+                    <h3>role</h3>
+                    <p>${data.info.role}</p>
+                </div>
+                <div class="info-block">
+                    <h3>technologies</h3>
+                    <p>${data.info.technologies}</p>
+                </div>
+                <div class="info-block">
+                    <h3>duration</h3>
+                    <p>${data.info.duration}</p>
+                </div>
+            </div>
+        `;
+
+        document.querySelector('.media-container').innerHTML = `
+            <div class="video-wrapper">
+                <video controls poster="${data.demonstration.video.poster}">
+                    <source src="${data.demonstration.video.mp4}" type="video/mp4">
+                    <source src="${data.demonstration.video.webm}" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="media-caption">${data.demonstration.video.caption}</div>
+            </div>
+        `;
+        document.querySelector('.image-gallery').innerHTML = data.demonstration.gallery.map(img => `
+            <div class="gallery-item">
+                <img src="${img.src}" alt="${img.alt}" loading="lazy">
+                <div class="media-caption">${img.caption}</div>
+            </div>
+        `).join('');
+
+        document.querySelector('.process-content').innerHTML = data.process.map(step => `
+            <div class="process-step">
+                <h3>${step.title}</h3>
+                <p>${step.text}</p>
+            </div>
+        `).join('');
+
+        document.querySelector('.technical-content').innerHTML = data.technical.map(tech => `
+            <div class="tech-block">
+                <h3>${tech.title}</h3>
+                <p>${tech.text}</p>
+            </div>
+        `).join('');
+
+        document.querySelector('.results-content').innerHTML = data.results.map(result => `
+            <div class="result-item">
+                <h3>${result.title}</h3>
+                <p>${result.text}</p>
+            </div>
+        `).join('');
+
+        document.querySelector('.links-container').innerHTML = data.links.map(link => `
+            <a href="${link.href}" class="project-link-large">${link.label}</a>
+        `).join('');
+    } catch (e) {
+        document.querySelector('.project-content').innerHTML = "<p>Project details not found.</p>";
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadProjectDetails);
+</script>
+
 <body>
     <!-- Corner Text -->
     <div class="corner-text corner-top-right">game designer</div>
@@ -20,7 +116,7 @@
     <!-- Project Header -->
     <header class="project-hero">
         <div class="project-hero-content">
-            <h1 class="project-name">dialogue framework</h1>
+            <h1 class="project-name"></h1>
             <div class="project-meta">
                 <span class="project-role">systems designer / programmer</span>
                 <span class="project-year">2024</span>
@@ -176,100 +272,6 @@
 
     </main>
 
-    <script>
-    function getProjectParam() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get('project') || 'dialogue-framework'; // default if not specified
-}
-
-async function loadProjectDetails() {
-    const project = getProjectParam();
-    const jsonFile = `project-${project}.json`;
-
-    try {
-        const response = await fetch(jsonFile);
-        const data = await response.json();
-
-        // ...rest of your rendering code...
-        document.querySelector('.project-name').textContent = data.name;
-        document.querySelector('.project-tagline').textContent = data.tagline;
-        document.title = `${data.name} - kevin cabranes`;
-
-        if(document.querySelector('.project-role')) {
-            document.querySelector('.project-role').textContent = data.role;
-        }
-        if(document.querySelector('.project-year')) {
-            document.querySelector('.project-year').textContent = data.year;
-        }
-
-        document.querySelector('.content-grid').innerHTML = `
-            <div class="content-text">
-                ${data.overview.map(p => `<p>${p}</p>`).join('')}
-            </div>
-            <div class="content-info">
-                <div class="info-block">
-                    <h3>role</h3>
-                    <p>${data.info.role}</p>
-                </div>
-                <div class="info-block">
-                    <h3>technologies</h3>
-                    <p>${data.info.technologies}</p>
-                </div>
-                <div class="info-block">
-                    <h3>duration</h3>
-                    <p>${data.info.duration}</p>
-                </div>
-            </div>
-        `;
-
-        document.querySelector('.media-container').innerHTML = `
-            <div class="video-wrapper">
-                <video controls poster="${data.demonstration.video.poster}">
-                    <source src="${data.demonstration.video.mp4}" type="video/mp4">
-                    <source src="${data.demonstration.video.webm}" type="video/webm">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="media-caption">${data.demonstration.video.caption}</div>
-            </div>
-        `;
-        document.querySelector('.image-gallery').innerHTML = data.demonstration.gallery.map(img => `
-            <div class="gallery-item">
-                <img src="${img.src}" alt="${img.alt}" loading="lazy">
-                <div class="media-caption">${img.caption}</div>
-            </div>
-        `).join('');
-
-        document.querySelector('.process-content').innerHTML = data.process.map(step => `
-            <div class="process-step">
-                <h3>${step.title}</h3>
-                <p>${step.text}</p>
-            </div>
-        `).join('');
-
-        document.querySelector('.technical-content').innerHTML = data.technical.map(tech => `
-            <div class="tech-block">
-                <h3>${tech.title}</h3>
-                <p>${tech.text}</p>
-            </div>
-        `).join('');
-
-        document.querySelector('.results-content').innerHTML = data.results.map(result => `
-            <div class="result-item">
-                <h3>${result.title}</h3>
-                <p>${result.text}</p>
-            </div>
-        `).join('');
-
-        document.querySelector('.links-container').innerHTML = data.links.map(link => `
-            <a href="${link.href}" class="project-link-large">${link.label}</a>
-        `).join('');
-    } catch (e) {
-        document.querySelector('.project-content').innerHTML = "<p>Project details not found.</p>";
-    }
-}
-
-document.addEventListener('DOMContentLoaded', loadProjectDetails);
-</script>
 
 </body>
 </html>
