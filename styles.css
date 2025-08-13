@@ -118,7 +118,7 @@
             min-height: 100vh;
             display: none;
              padding-top: 120px; /* Space for dock menu */
-             margin-left: 150px;
+             margin-left: 200px;
 
         }
 
@@ -220,12 +220,18 @@
 
         /* Skills Layout */
         .skills-container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            justify-content: center;
         }
 
         .skill-block {
-            margin-bottom: 50px;
+            margin-bottom: 0;
+            flex: 1 1 0;
+            min-width: 220px;
         }
 
         .skill-category {
@@ -271,6 +277,7 @@
         .contact-container {
             max-width: 600px;
             margin: 0 auto;
+            margin-bottom: 100px;
         }
 
         .contact-item {

@@ -24,9 +24,11 @@
 
     <!-- Navigation -->
     <nav class="main-nav">
-        <a href="#home" class="nav-link active">about</a>
-        <a href="#projects" class="nav-link">projects</a>
-        <a href="#skills" class="nav-link">skills</a>
+    <a href="#projects" class="nav-link active">projects</a>
+    <a href="#system-design" class="nav-link">system design</a>
+    <a href="#level-design" class="nav-link">level design</a>
+    <a href="#skills" class="nav-link">skills</a>
+    <a href="#about" class="nav-link">info</a>
     </nav>
 
     <!-- Header -->
@@ -67,48 +69,86 @@
                     <a href="#" class="project-link">documentation</a>
                 </div>
             </div>
+        </div>
+    </section>
 
+
+    <!-- System Design -->
+    <section id="system-design" class="section">
+        <h2 class="section-title">system design</h2>
+        <div class="projects-container">
             <div class="project-item">
                 <div class="project-header">
-                    <h3 class="project-title">2D Narrative Adventure</h3>
-                    <span class="project-year">2024</span>
-                </div>
-                <div class="project-role">main developer / content creator</div>
-                <p class="project-description">
-                    a 2d adventure narrative game built with modern game development tools, showcasing rich storytelling mechanics and character-driven gameplay - players explore hand-crafted environments while making meaningful choices that shape branching storylines and character relationships - this project demonstrates proficiency in multiple game development disciplines including narrative design, 2d animation systems, dialogue programming, and player progression mechanics
-                </p>
-                <div class="project-tech">
-                    <span class="tech-item">ue5 blueprints</span>
-                    <span class="tech-item">behavior trees</span>
-                    <span class="tech-item">states design pattern</span>
-                </div>
-                <div class="project-links">
-                    <a href="narrative-adventure.html" class="project-link">view details</a>
-                    <a href="#" class="project-link">documentation</a>
-                </div>
-            </div>
-
-            <div class="project-item">
-                <div class="project-header">
-                    <h3 class="project-title">first person horror</h3>
+                    <h3 class="project-title">branching dialogue system</h3>
                     <span class="project-year">2025</span>
                 </div>
-                <div class="project-role">game designer / level designer / system design</div>
+                <div class="project-role">main designer</div>
                 <p class="project-description">
-                    a first-person horror experience built in unreal engine 5, showcasing advanced physics interactions and atmospheric design - players solve environmental puzzles using realistic object manipulation while navigating a tension-filled environment - this project demonstrates proficiency in multiple game development disciplines including gameplay programming, ai behavior, audio design, and performance optimization.
+                    implemented a branching dialogue system in ue5 using the composite design pattern, enabling flexible conversation trees with nested dialogue nodes. supports dynamic choices, conditional branches, and scalable narrative structures for complex interactions.
                 </p>
                 <div class="project-tech">
                     <span class="tech-item">ue5 blueprints</span>
-                    <span class="tech-item">pbr materials</span>
-                    <span class="tech-item">image processing</span>
+                    <span class="tech-item">design patterns</span>
+                    <span class="tech-item">modular systems</span>
+                    <span class="tech-item">designed for scale</span>
                 </div>
                 <div class="project-links">
-                    <a href="firstp-horror.html" class="project-link">view details</a>
+                    <a href="#" class="project-link">view details</a>
                     <a href="#" class="project-link">documentation</a>
                 </div>
             </div>
+        </div>
+        
+        <div class="projects-container">
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">top-down camera controller</h3>
+                    <span class="project-year">2025</span>
+                </div>
+                <div class="project-role">main designer</div>
+                <p class="project-description">
+                    developed a top-down camera controller in ue5, allowing smooth camera movement, zoom, and rotation. supports player tracking, adjustable boundaries, and modular features for various gameplay scenarios.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-item">ue5 blueprints</span>
+                    <span class="tech-item">design patterns</span>
+                    <span class="tech-item">modular systems</span>
+                    <span class="tech-item">designed for scale</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">view details</a>
+                    <a href="#" class="project-link">documentation</a>
+                </div>
+            </div>
+        </div>
 
-           
+        
+    </section>
+
+
+    <!-- Level Design -->
+    <section id="level-design" class="section">
+        <h2 class="section-title">level design</h2>
+        <div class="projects-container">
+            <div class="project-item">
+                <div class="project-header">
+                    <h3 class="project-title">thriller testing facility</h3>
+                    <span class="project-year">2025</span>
+                </div>
+                <div class="project-role">level designer</div>
+                <p class="project-description">
+                    designed a level in ue5 focused on immersive atmosphere and player experience, utilizing lighting, sound, and environmental storytelling to engage players and enhance exploration.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-item">ue5</span>
+                    <span class="tech-item">level streaming</span>
+                    <span class="tech-item">ai navigation</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">view details</a>
+                    <a href="#" class="project-link">documentation</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -186,13 +226,7 @@ I’ve worked on a variety of personal and hobbyist projects, mostly prototypes 
 
 <p class="about-text">STAY TUNED</p>
 
-
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section">
-        <h2 class="section-title">contact</h2>
+<h2 class="section-title">contact</h2>
         <div class="contact-container">
             <div class="contact-item">
                 <span class="contact-label">email</span>
@@ -213,7 +247,10 @@ I’ve worked on a variety of personal and hobbyist projects, mostly prototypes 
                 </span>
             </div>
         </div>
+
+        </div>
     </section>
+
 
     <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -270,8 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
     });
-        document.getElementById('about').classList.add('active');
-        document.getElementById('contact').classList.add('active');
+        document.getElementById('projects').classList.add('active');
         });
     
     </script>
