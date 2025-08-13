@@ -1,0 +1,93 @@
+{
+  "name": "top-down crpg",
+  "role": "systems designer / programmer",
+  "year": "2025",
+  "tagline": "flexible dialogue system built in ue5 for branching narratives and dynamic npc responses",
+  "overview": [
+    "A comprehensive dialogue system designed for modern game development, focusing on flexibility and scalability.",
+    "Built with modular architecture, the system allows designers to create rich conversational experiences.",
+    "Key features include emotional state tracking, conversation history persistence, and integration with existing game systems."
+  ],
+  "info": {
+    "role": "systems designer<br>programmer<br>technical lead",
+    "technologies": "unreal engine 5<br>c++ & blueprints<br>json<br>behavior trees",
+    "duration": "6 months<br>ongoing support"
+  },
+  "demonstration": {
+    "video": {
+      "mp4": "videos/dialogue-framework-demo.mp4",
+      "webm": "videos/dialogue-framework-demo.webm",
+      "poster": "images/dialogue-framework-thumb.jpg",
+      "caption": "dialogue system in action - dynamic npc responses based on player choices"
+    },
+    "gallery": [
+      {
+        "src": "images/dialogue-editor.jpg",
+        "alt": "Dialogue Editor Interface",
+        "caption": "visual dialogue editor for designers"
+      },
+      {
+        "src": "images/conversation-tree.jpg",
+        "alt": "Conversation Tree Structure",
+        "caption": "branching conversation structure"
+      },
+      {
+        "src": "images/npc-emotions.jpg",
+        "alt": "NPC Emotional States",
+        "caption": "emotional state visualization"
+      }
+    ]
+  },
+  "process": [
+    {
+      "title": "research & planning",
+      "text": "analyzed existing dialogue systems in games like disco elysium, mass effect, and cyberpunk 2077."
+    },
+    {
+      "title": "prototyping",
+      "text": "created multiple prototypes testing different approaches to dialogue flow, data storage, and designer workflow."
+    },
+    {
+      "title": "implementation",
+      "text": "developed core system using ue5 c++ for performance-critical components and blueprints for designer-facing tools."
+    },
+    {
+      "title": "testing & iteration",
+      "text": "conducted extensive testing with narrative designers and programmers."
+    }
+  ],
+  "technical": [
+    {
+      "title": "architecture",
+      "text": "modular system built with component-based design."
+    },
+    {
+      "title": "performance",
+      "text": "optimized for real-time performance with conversation caching, lazy loading of dialogue data, and efficient memory management."
+    },
+    {
+      "title": "integration",
+      "text": "designed to integrate seamlessly with existing game systems."
+    }
+  ],
+  "results": [
+    {
+      "title": "adoption",
+      "text": "successfully integrated into 3 shipped titles and 2 ongoing projects."
+    },
+    {
+      "title": "feedback",
+      "text": "positive reception from narrative designers who praised the intuitive interface and powerful features."
+    },
+    {
+      "title": "recognition",
+      "text": "featured in gamedeveloper.com article on modern dialogue systems."
+    }
+  ],
+  "links": [
+    {
+      "href": "#",
+      "label": "github repository"
+    }
+  ]
+}
