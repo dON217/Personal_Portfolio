@@ -51,7 +51,7 @@
     pointer-events: none;
     opacity: 1;
     transition: opacity 0.7s;
-    filter: brightness(40%);
+    filter: brightness(30%);
 }
 
         .header {
@@ -86,7 +86,7 @@
         }
 
         .name {
-            font-size: clamp(3rem, 8vw, 12rem);
+            font-size: clamp(1rem, 6vw, 10rem);
             font-weight: normal;
             letter-spacing: -0.05em;
             margin-bottom: 20px;
@@ -95,7 +95,7 @@
 
         .tagline {
             font-size: clamp(1rem, 2vw, 1.5rem);
-            color: #999;
+            color: #ff0000;
             margin-bottom: 40px;
             text-transform: lowercase;
         }
@@ -118,7 +118,7 @@
             min-height: 100vh;
             display: none;
              padding-top: 120px; /* Space for dock menu */
-             padding-left: 80px; /* Space for main nav */
+             margin-left: 150px;
 
         }
 
@@ -137,7 +137,7 @@
         /* Projects Grid */
         .projects-container {
             max-width: 1400px;
-            margin: 120px 0 0 80px; /* Top margin for dock, left margin for nav */
+            margin: 120px 0 0 0; /* Top margin for dock, no left margin */
 }
 
 
@@ -198,15 +198,20 @@
             display: flex;
             gap: 30px;
             flex-wrap: wrap;
+            align-items: flex-start;
         }
 
         .project-link {
             color: #fff;
             text-decoration: none;
             text-transform: lowercase;
-            padding: 10px 0;
+            padding: 2px 8px;              /* Remove vertical padding, add minimal horizontal */
             border-bottom: 1px solid transparent;
             transition: border-color 0.3s;
+            display: inline-block; /* <-- Add this line */
+            width: auto;
+            box-sizing: border-box;
+            min-width: 0;
         }
 
         .project-link:hover {
@@ -257,7 +262,8 @@
         .about-text {
             font-size: 18px;
             line-height: 1.8;
-            color: #ccc;
+            color: #e72020;
+            margin-top: 40px;
             margin-bottom: 40px;
         }
 
@@ -420,7 +426,7 @@
     text-transform: lowercase;
     padding: 6px 12px;
     border-radius: 20px;
-    background: #ff0066;
+    background: #ab0c0c;
     transition: background 0.3s;
 }
 .dock-home:hover {
