@@ -56,35 +56,33 @@ async function loadProjectDetails() {
         `;
 
         // Media section: YouTube embed if present, else fallback to video tag if mp4/webm present
-        const video = data.demonstration?.video || {};
-        let videoHtml = '';
-        if (video.youtube) {
-            // Accept both full YouTube URLs and just the video ID
-            let youtubeSrc = video.youtube;
-            if (!youtubeSrc.includes('youtube.com') && !youtubeSrc.includes('youtu.be')) {
-                youtubeSrc = `https://www.youtube.com/embed/${youtubeSrc}`;
-            }
-            videoHtml = `
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="${youtubeSrc}" 
-                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen style="max-width:100%;"></iframe>
-                    <div class="media-caption">${video.caption || ''}</div>
-                </div>
-            `;
-        } else if (video.mp4 || video.webm) {
-            videoHtml = `
-                <div class="video-wrapper">
-                    <video controls ${video.poster ? `poster="${video.poster}"` : ''} style="max-width:100%;height:auto;">
-                        ${video.mp4 ? `<source src="${video.mp4}" type="video/mp4">` : ''}
-                        ${video.webm ? `<source src="${video.webm}" type="video/webm">` : ''}
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="media-caption">${video.caption || ''}</div>
-                </div>
-            `;
-        }
-        document.querySelector('.media-container').innerHTML = videoHtml;
+       const video = data.demonstration?.video || {};
+let videoHtml = '';
+if (video.youtube) {
+    // Extract only the video ID if a full URL or ID+params is provided
+    let youtubeId = video.youtube;
+    if (youtubeId.includes('youtube.com') || youtubeId.includes('youtu.be')) {
+        // Already a full URL, use as is
+        youtubeId = youtubeId;
+    } else {
+        // Remove any params after the video ID
+        youtubeId = youtubeId.split('?')[0];
+        youtubeId = `https://www.youtube.com/embed/${youtubeId}`;
+    }
+    videoHtml = `
+        <div class="video-wrapper" style="display:flex;flex-direction:column;align-items:center;">
+            <div style="position:relative;width:100%;max-width:720px;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:0 2px 16px #000a;">
+                <iframe src="${youtubeId}" 
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:12px;">
+                </iframe>
+            </div>
+            <div class="media-caption" style="margin-top:1em;text-align:center;">${video.caption || ''}</div>
+        </div>
+    `;
+}
+document.querySelector('.media-container').innerHTML = videoHtml;
 
         // Gallery
         document.querySelector('.image-gallery').innerHTML = (data.demonstration?.gallery || []).map(img => `
