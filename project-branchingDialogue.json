@@ -15,12 +15,12 @@
   },
   "demonstration": {
     "video": {
-      "youtube": "YcBJQ5-yzj4?si=Eo3_aOcbmVNx-mHd",
+      "youtube": "",
       "caption": "dialogue system in action - dynamic npc responses based on player choices"
     },
     "gallery": [
       {
-        "src": "images/DialogueImages/dialogue-editor.png",
+        "src": "",
         "alt": "Dialogue Editor Interface",
         "caption": "visual dialogue editor for designers"
       },
