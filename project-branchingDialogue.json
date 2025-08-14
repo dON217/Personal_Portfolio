@@ -1,7 +1,7 @@
 {
-  "name": "top-down crpg",
-  "role": "systems designer / programmer",
-  "year": "2024",
+  "name": "branching dialogue system",
+  "role": "main designer",
+  "year": "2025",
   "tagline": "flexible dialogue system built in ue5 for branching narratives and dynamic npc responses",
   "overview": [
     "A comprehensive dialogue system designed for modern game development, focusing on flexibility and scalability.",
@@ -9,15 +9,13 @@
     "Key features include emotional state tracking, conversation history persistence, and integration with existing game systems."
   ],
   "info": {
-    "role": "systems designer<br>programmer<br>technical lead",
-    "technologies": "unreal engine 5<br>c++ & blueprints<br>json<br>behavior trees",
-    "duration": "6 months<br>ongoing support"
+    "role": "ui designer<br>scripter<br>writer",
+    "technologies": "unreal engine 5<br>blueprints<br>adobe photoshop",
+    "duration": ""
   },
   "demonstration": {
     "video": {
-      "mp4": "videos/dialogue-framework-demo.mp4",
-      "webm": "videos/dialogue-framework-demo.webm",
-      "poster": "images/dialogue-framework-thumb.jpg",
+      "youtube": "YcBJQ5-yzj4?si=Eo3_aOcbmVNx-mHd",
       "caption": "dialogue system in action - dynamic npc responses based on player choices"
     },
     "gallery": [
