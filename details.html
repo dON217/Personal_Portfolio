@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="topdownstyle.css">
 </head>
-
 <script>
 function getProjectParam() {
     const params = new URLSearchParams(window.location.search);
@@ -22,23 +21,107 @@ async function loadProjectDetails() {
         const response = await fetch(jsonFile);
         const data = await response.json();
 
-        // ...other rendering code...
+        // Project header
+        document.querySelector('.project-name').textContent = data.name || '';
+        document.querySelector('.project-tagline').textContent = data.tagline || '';
+        if(document.querySelector('.project-role')) {
+            document.querySelector('.project-role').textContent = data.role || '';
+        }
+        if(document.querySelector('.project-year')) {
+            document.querySelector('.project-year').textContent = data.year || '';
+        }
+        document.title = `${data.name || 'project'} - kevin cabranes`;
 
-        // Render the video in the media section
-        const video = data.demonstration.video;
-        let videoHtml = `
-            <div class="video-wrapper">
-                <video controls ${video.poster ? `poster="${video.poster}"` : ''} style="max-width:100%;height:auto;">
-                    ${video.mp4 ? `<source src="${video.mp4}" type="video/mp4">` : ''}
-                    ${video.webm ? `<source src="${video.webm}" type="video/webm">` : ''}
-                    Your browser does not support the video tag.
-                </video>
-                <div class="media-caption">${video.caption || ''}</div>
+        // Overview
+        document.querySelector('.content-grid').innerHTML = `
+            <div class="content-text">
+                ${(data.overview || []).map(p => `<p>${p}</p>`).join('')}
+            </div>
+            <div class="content-info">
+                <div class="info-block">
+                    <h3>role</h3>
+                    <p>${data.info?.role || ''}</p>
+                </div>
+                <div class="info-block">
+                    <h3>technologies</h3>
+                    <p>${data.info?.technologies || ''}</p>
+                </div>
+                ${data.info?.duration ? `
+                <div class="info-block">
+                    <h3>duration</h3>
+                    <p>${data.info.duration}</p>
+                </div>
+                ` : ''}
             </div>
         `;
+
+        // Media section: YouTube embed if present, else fallback to video tag if mp4/webm present
+        const video = data.demonstration?.video || {};
+        let videoHtml = '';
+        if (video.youtube) {
+            // Accept both full YouTube URLs and just the video ID
+            let youtubeSrc = video.youtube;
+            if (!youtubeSrc.includes('youtube.com') && !youtubeSrc.includes('youtu.be')) {
+                youtubeSrc = `https://www.youtube.com/embed/${youtubeSrc}`;
+            }
+            videoHtml = `
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="${youtubeSrc}" 
+                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen style="max-width:100%;"></iframe>
+                    <div class="media-caption">${video.caption || ''}</div>
+                </div>
+            `;
+        } else if (video.mp4 || video.webm) {
+            videoHtml = `
+                <div class="video-wrapper">
+                    <video controls ${video.poster ? `poster="${video.poster}"` : ''} style="max-width:100%;height:auto;">
+                        ${video.mp4 ? `<source src="${video.mp4}" type="video/mp4">` : ''}
+                        ${video.webm ? `<source src="${video.webm}" type="video/webm">` : ''}
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="media-caption">${video.caption || ''}</div>
+                </div>
+            `;
+        }
         document.querySelector('.media-container').innerHTML = videoHtml;
 
-        // ...other rendering code...
+        // Gallery
+        document.querySelector('.image-gallery').innerHTML = (data.demonstration?.gallery || []).map(img => `
+            <div class="gallery-item">
+                <img src="${img.src}" alt="${img.alt}" loading="lazy">
+                <div class="media-caption">${img.caption}</div>
+            </div>
+        `).join('');
+
+        // Process
+        document.querySelector('.process-content').innerHTML = (data.process || []).map(step => `
+            <div class="process-step">
+                ${step.title ? `<h3>${step.title}</h3>` : ''}
+                <p>${step.text}</p>
+            </div>
+        `).join('');
+
+        // Technical
+        document.querySelector('.technical-content').innerHTML = (data.technical || []).map(tech => `
+            <div class="tech-block">
+                ${tech.title ? `<h3>${tech.title}</h3>` : ''}
+                <p>${tech.text}</p>
+            </div>
+        `).join('');
+
+        // Results
+        document.querySelector('.results-content').innerHTML = (data.results || []).map(result => `
+            <div class="result-item">
+                ${result.title ? `<h3>${result.title}</h3>` : ''}
+                <p>${result.text}</p>
+            </div>
+        `).join('');
+
+        // Links
+        document.querySelector('.links-container').innerHTML = (data.links || []).map(link => `
+            <a href="${link.href}" class="project-link-large">${link.label}</a>
+        `).join('');
     } catch (e) {
         document.querySelector('.project-content').innerHTML = "<p>Project details not found.</p>";
     }
