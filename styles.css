@@ -95,7 +95,7 @@
 
         .tagline {
             font-size: clamp(1rem, 2vw, 1.5rem);
-            color: #ff0000;
+            color: #ff0066;
             margin-bottom: 40px;
             text-transform: lowercase;
         }
@@ -268,7 +268,7 @@
         .about-text {
             font-size: 18px;
             line-height: 1.8;
-            color: #e72020;
+            color: #ff0066;
             margin-top: 40px;
             margin-bottom: 40px;
         }
@@ -433,7 +433,7 @@
     text-transform: lowercase;
     padding: 6px 12px;
     border-radius: 20px;
-    background: #ab0c0c;
+    background: #ff0066;
     transition: background 0.3s;
 }
 .dock-home:hover {
