@@ -440,3 +440,124 @@
     background: #373737;
     color: #ffffff;
 }
+
+/* Project media gallery (images & videos with captions) */
+.media-gallery {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  align-items: flex-start;
+}
+
+.media-item {
+  width: calc(50% - 14px); /* two columns with gap */
+  max-width: 560px;
+}
+
+.media-item img,
+.media-item video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid #222;
+  background: #000;
+  border-radius: 4px;
+}
+
+.media-item figcaption {
+  margin-top: 10px;
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Single-column on narrow viewports */
+@media (max-width: 800px) {
+  .media-item {
+    width: 100%;
+  }
+}
+/* dotted / bulleted list for project descriptions */
+.dot-list {
+  margin: 12px 0 0 22px;
+  padding: 0;
+  color: #ccc;
+}
+
+.dot-list li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  list-style-type: disc; /* standard filled dot */
+  font-size: 16px;
+}
+
+/* color the bullet to match your accent */
+.dot-list li::marker {
+  color: #ff0066;
+  font-size: 16px;
+}
+
+/* Back button on project detail pages — match main nav link style */
+.button-nav {
+ position: fixed;
+  left: 20px;
+  top: 40px;
+  z-index: 2000;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-transform: lowercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+.button-nav:hover,
+.button-nav:focus {
+  color: #ff0066;
+  transform: translateX(10px);
+  outline: none;
+}
+.button-nav-project-detail,
+.project-detail {
+  padding: 40px;
+  max-width: 920px;
+  margin: 120px 0 80px 220px; /* leaves space on the left for fixed nav/button */
+}
+
+@media (max-width: 768px) {
+  .button-nav {
+    left: 16px;
+    top: 16px;
+    font-size: 18px;
+  }
+  .button-nav-project-detail,
+  .project-detail {
+    margin-left: 0;
+    padding: 40px 20px;
+  }
+}
+
+/* Responsive iframe wrapper (16:9) used for YouTube embeds */
+.video-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  background: #000;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
